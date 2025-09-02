@@ -1,6 +1,5 @@
 name: "infa-workflow"
-on: 
-  workflow_dispatch:
+on: push
 jobs:
   job_name: 
     runs-on: ubuntu-latest
