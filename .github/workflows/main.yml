@@ -1,44 +1,34 @@
-# this is Brightspeed infra automation pipeline
-name: "Brightspeed Infra"
+name: "infa-workflow"
 on: 
   workflow_dispatch:
 jobs:
-  job_name:
+  job_name: 
     runs-on: ubuntu-latest
-    permissions:
+    permissions: 
       id-token: write
       contents: read
-    steps:
-      - name: checkout
-        uses: actions/checkout@v5.0.0
+    steps: 
+    - name: Checkout
+      uses: actions/checkout@v5.0.0
+    - name: Install Terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        version: 1.13.0
+    - name: Azure Login
+      uses: Azure/login@v2.3.0
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS}}
+    
+    - name: Terraform Init
+      run: terraform init
+      working-directory: dev
+    - name: Terraform Plan
+      run: terraform plan
+      working-directory: dev
+    - name: Terraform Apply
+      run: terraform apply -auto-approve
+      working-directory: dev
 
-      - name: terraform install
-        uses: hashicorp/setup-terraform@v3
-        with:
-          terraform_version: 1.13.0
-
-      - name: Azure Login
-        uses: azure/login@v2.3.0
-        with:
-          creds: ${{secrets.AZURE_CREDENTIALS}}
-      
-      - name: Terraform Init
-        run: terraform init
-        working-directory: dev
-      
-      - name: Terraform Validate
-        run: terraform validate
-        working-directory: dev
-       
-      - name: Terraform Format
-        run: terraform fmt
-        working-directory: dev
-      
-      - name: Terraform Plan
-        run: terraform plan
-        working-directory: dev
-
-      - name: Terraform Apply
-        run: terraform apply -auto-approve
-        working-directory: dev
-        
+    
+    
+          
