@@ -48,3 +48,17 @@ subnet = {
         address_prefixes = ["10.0.0.0/24"]
     }
 }
+
+nic = {
+    nic1 = {
+        name = "nic1"
+        rgkey = "rg1"
+        snetkey = "subnet1"
+    }
+
+    nic2 = {
+        name = "nic2"
+        rgkey = "rg1"
+        snetkey = "subnet2"
+    }
+}

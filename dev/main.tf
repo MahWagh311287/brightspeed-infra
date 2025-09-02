@@ -18,4 +18,17 @@ module "subnet" {
   depends_on = [ module.rg, module.vnet ]
 }
 
+module "nic" {
+  source = "../modules/nic"
+  nic_name = var.nic
+  rg = module.rg.rg-output
+  snet = module.subnet.subnet-output
+  depends_on = [ module.rg, module.subnet ]
+}
+
+module "pip" {
+  source = "../modules/pip"
+  pip_name = var.pip
+  rg = module.rg.rg-output
+}
 
