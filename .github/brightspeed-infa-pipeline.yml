@@ -1,4 +1,4 @@
-# this is Brightspeed infra automation pipeline
+# this is Brightspeed infra automation pipelines
 name: Brightspeed Infra
 on: push
 jobs:
