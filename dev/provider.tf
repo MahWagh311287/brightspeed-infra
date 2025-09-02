@@ -7,7 +7,7 @@ terraform {
   }
 
   backend "azurerm" {
-    storage_account_name = "brightspeedsa"
+    storage_account_name = "brightspeedsa1"
     container_name       = "brightspeed-container"
     key                  = "terraform.tfstate"
     resource_group_name = "brightspeed-rg"
