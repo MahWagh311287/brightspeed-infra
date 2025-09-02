@@ -1,3 +1,2 @@
-variable "rg" {
-  
-}
+variable "rg" {}
+variable "vnet" {}
