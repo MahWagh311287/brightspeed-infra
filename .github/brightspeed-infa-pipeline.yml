@@ -1,6 +1,7 @@
 # this is Brightspeed infra automation pipelines
 name: Brightspeed Infra
-on: push
+on: 
+  workflow_dispatch:
 jobs:
   checkout:
     run-on: ubuntu-latest
